@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Week_5_Task</string>
+    <string name="required">Required</string>
+
+
+    <string-array name="name">
+        <item>Male</item>
+        <item>Female</item>
+
+    </string-array>
+</resources>

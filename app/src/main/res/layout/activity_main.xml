@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/ic_launcher_foreground"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTRATION FORM"
+        app:circularflow_defaultRadius="@dimen/cardview_compat_inset_shadow"
+        android:background="@color/black"
+        android:shadowRadius="@integer/material_motion_duration_medium_2"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101">
+
+    </TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:textColorHint="@color/white"
+        app:hintTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
+        android:background="@color/white"
+        android:backgroundTint="@color/black"
+        app:helperText="@string/required"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registration"
+        app:layout_constraintVertical_bias="0.047">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edFullName"
+                android:backgroundTint="@color/black"
+                android:shadowRadius="@integer/material_motion_duration_medium_2"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:layout_height="wrap_content">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/svEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/black"
+        app:hintTextColor="@color/white"
+        app:helperText="@string/required"
+        app:helperTextTextColor="@color/white"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFullName">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/eaEmail"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/qrPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:helperText="@string/required"
+        app:helperTextTextColor="@color/white"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:counterEnabled="true"
+        app:counterMaxLength="14"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/svEmail"
+        app:layout_constraintVertical_bias="0.047">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rbPhoneNumber"
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/black"
+            android:lines="1"
+            android:hint="Phone Number"
+            android:inputType="number"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/spinnetr1"
+        android:layout_width="376dp"
+        android:layout_height="75dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+        android:background="@color/black"
+        android:dropDownSelector="@color/white"
+        android:entries="@array/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qrPhoneNumber" />
+
+    <Button
+        android:id="@+id/gdSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="cursive"
+        android:text="sign up"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnetr1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
