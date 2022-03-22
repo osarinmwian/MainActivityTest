@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/pager"
     android:layout_width="match_parent"
-    android:background="@drawable/ic_launcher_foreground"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -12,144 +12,149 @@
         android:id="@+id/registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="REGISTRATION FORM"
-        app:circularflow_defaultRadius="@dimen/cardview_compat_inset_shadow"
-        android:background="@color/black"
-        android:shadowRadius="@integer/material_motion_duration_medium_2"
-        android:textStyle="bold"
+        android:background="#0000ffff"
+        android:backgroundTint="@color/black"
         android:fontFamily="cursive"
+        android:text="REGISTRATION FORM"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintHorizontal_bias="0.335"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101">
+        app:layout_constraintVertical_bias="0.071">
 
     </TextView>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvFullName"
+        android:id="@+id/MainActivity_FullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="130dp"
+        android:textColorHint="@color/black"
+        android:layout_marginEnd="20dp"
+        android:background="#0000ffff"
         android:hint="Full Name"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
-        app:helperTextTextColor="@color/white"
-        android:background="@color/white"
-        android:backgroundTint="@color/black"
-        app:helperText="@string/required"
+        app:helperTextTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registration"
-        app:layout_constraintVertical_bias="0.047">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edFullName"
-                android:backgroundTint="@color/black"
-                android:shadowRadius="@integer/material_motion_duration_medium_2"
-                android:textColor="@color/white"
-                android:layout_width="match_parent"
-                android:inputType="textPersonName"
-                android:layout_height="wrap_content">
+        app:startIconDrawable="@drawable/ic_baseline_person_24">
 
-            </com.google.android.material.textfield.TextInputEditText>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/svEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:textColorHint="@color/white"
-        android:backgroundTint="@color/black"
-        app:hintTextColor="@color/white"
-        app:helperText="@string/required"
-        app:helperTextTextColor="@color/white"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFullName">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/eaEmail"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/black"
+            android:id="@+id/Layout_FullName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#0000ffff"
+            android:fontFamily="serif"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="22sp"
+            tools:layout_editor_absoluteX="41dp"
+            tools:layout_editor_absoluteY="204dp" />
 
-        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/MainActivity_Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/black"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="#0000ffff"
+        app:boxCornerRadiusTopStart="20dp"
+        android:hint="Email"
+        app:counterMaxLength="500"
+        app:helperTextTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/MainActivity_FullName"
+        app:startIconDrawable="@drawable/ic_baseline_email_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Layout_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000ffff"
+            android:fontFamily="serif"
+            android:textSize="22sp"
+            android:inputType="textEmailAddress"
+            android:lines="1"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/qrPhoneNumber"
+        android:id="@+id/MainActivity_PhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:hintTextColor="@color/white"
-        android:textColorHint="@color/white"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:helperText="@string/required"
-        app:helperTextTextColor="@color/white"
-        app:layout_constraintHorizontal_bias="0.493"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="@color/black"
+        android:background="#0000ffff"
         app:counterEnabled="true"
         app:counterMaxLength="14"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="30dp"
+        app:helperTextTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/svEmail"
-        app:layout_constraintVertical_bias="0.047">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/rbPhoneNumber"
-            android:layout_width="match_parent"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/black"
-            android:lines="1"
-            android:hint="Phone Number"
-            android:inputType="number"
-            android:layout_height="wrap_content">
+        app:layout_constraintTop_toBottomOf="@id/MainActivity_Email"
+        app:startIconDrawable="@drawable/ic_baseline_phone_callback_24">
 
-        </com.google.android.material.textfield.TextInputEditText>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Layout_Phone_Number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:fontFamily="serif"
+            android:inputType="phone"
+            android:lines="1"
+            android:background="#0000ffff"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="22sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <Spinner
         android:id="@+id/spinnetr1"
-        android:layout_width="376dp"
-        android:layout_height="75dp"
-        android:layout_margin="20dp"
-        android:layout_marginTop="12dp"
-        android:clickable="true"
-        android:background="@color/black"
-        android:dropDownSelector="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="28dp"
+        android:scrollbarSize="30sp"
+        android:textSize="50sp"
         android:entries="@array/name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qrPhoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/MainActivity_PhoneNumber">
+
+    </Spinner>
 
     <Button
-        android:id="@+id/gdSignUp"
+        android:id="@+id/MainActivity_SignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/black"
         android:fontFamily="cursive"
         android:text="sign up"
         android:textAlignment="center"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.874"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnetr1" />
 

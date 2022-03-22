@@ -5,56 +5,82 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.SpinnerAdapter
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.get
 
 import com.example.week_5_task.databinding.ActivityMainBinding
 import kotlin.math.sign
 
 
+
+
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
+    private lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-        binding.gdSignUp.setOnClickListener { signupForm() }
-
         emailFocusListener()
         phoneFocusListener()
         nameFocusListener()
+        binding.MainActivitySignUp.setOnClickListener { signupForm() }
 
-}
-    private fun signupForm(){
-        binding.svEmail.helperText = validEmail()
-        binding.tvFullName.helperText = validName()
-        binding.qrPhoneNumber.helperText = validPhone()
-
-        val validEmail = binding.svEmail.helperText == null
-        val validName = binding.tvFullName.helperText == null
-        val validPhone = binding.qrPhoneNumber.helperText == null
-
-
-        if (validEmail && validName && validPhone)
-            resetForm()
-        else
-            invalidForm()
 
     }
+
+    private fun signupForm(){
+        binding.MainActivityEmail.helperText = validEmail()
+        binding.MainActivityFullName.helperText = validName()
+        binding.MainActivityPhoneNumber.helperText = validPhone()
+
+
+
+        val validEmail = binding.MainActivityEmail.helperText == null
+        val validName = binding.MainActivityFullName.helperText == null
+        val validPhone = binding.MainActivityPhoneNumber.helperText == null
+
+        if (validEmail && validName && validPhone )
+            callActivity()
+    else
+            invalidForm()
+    }
+    private fun callActivity() {
+
+        val name = binding.LayoutFullName.text.toString()
+        val mail = binding.LayoutEmail.text.toString()
+        val phone = binding.LayoutPhoneNumber.text.toString()
+        val gender = binding.spinnetr1.selectedItem.toString()
+        resetForm()
+        Intent (this,MainActivity2::class.java).also {
+            it.putExtra("Full Name",name)
+            it.putExtra("Email", mail)
+            it.putExtra("phone Number", phone)
+            it.putExtra("Gender", gender)
+            startActivity(it)
+        }
+
+    }
+
     private fun invalidForm(){
       var message = ""
-        if (binding.svEmail.helperText != null)
-            message += "\n\nEmail: " + binding.svEmail.helperText
-        if (binding.tvFullName.helperText != null)
-            message += "\n\nName: " + binding.tvFullName.helperText
-        if (binding.qrPhoneNumber.helperText != null)
-            message += "\n\nPhone: " + binding.qrPhoneNumber.helperText
-
-
+        if (binding.MainActivityEmail.helperText != null)
+            message += "\n\nEmail: " + binding.MainActivityEmail.helperText
+        if (binding.MainActivityFullName.helperText != null)
+            message += "\n\nName: " + binding.MainActivityFullName.helperText
+        if (binding.MainActivityPhoneNumber.helperText != null)
+            message += "\n\nPhone: " + binding.MainActivityPhoneNumber.helperText
+//        if (binding.spinnetr1!= null)
+//            message += "\n\nGender: " + binding.spinnetr1
+//
+//        //dialog toast message for invalid details
         AlertDialog.Builder(this)
             .setTitle("invalid Form")
             .setMessage(message)
@@ -66,65 +92,63 @@ class MainActivity : AppCompatActivity() {
     }
     private  fun resetForm(){
 
-        var message = "Email: " + binding.eaEmail.text
-            message += "\nName: " + binding.edFullName.text
-            message += "\nPhone: " + binding.rbPhoneNumber.text
-
+        //dialog toast message for successfull registration
         AlertDialog.Builder(this)
-            .setTitle("Form submitted")
-            .setMessage(message)
             .setPositiveButton("Okay"){ _,_ ->
                 //do something
-                binding.eaEmail.text = null
-                binding.edFullName.text = null
-                binding.rbPhoneNumber.text = null
+                binding.LayoutEmail.text = null
+                binding.LayoutFullName.text = null
+                binding.LayoutPhoneNumber.text = null
 
-                binding.svEmail.helperText = getString(R.string.required)
-                binding.tvFullName.helperText = getString(R.string.required)
-                binding.qrPhoneNumber.helperText = getString(R.string.required)
+                binding.MainActivityEmail.helperText = getString(R.string.required)
+                binding.MainActivityFullName.helperText = getString(R.string.required)
+                binding.MainActivityPhoneNumber.helperText = getString(R.string.required)
             }
             .show()
-
-        val intent = Intent (this,MainActivity2::class.java)
-        startActivity(intent)
-
     }
 
-
+    // helperText toast message for the invalid Email address
     private fun nameFocusListener() {
 
-        binding.edFullName.setOnFocusChangeListener { _, focused ->
+        binding.LayoutFullName.setOnFocusChangeListener { _, focused ->
             if (!focused)
             {
-                binding.tvFullName.helperText = validName()
+                binding.MainActivityFullName.helperText = validName()
 
             }
         }
     }
+    //validate correct Full Name
+
     private fun validName(): String? {
-        val nameText = binding.edFullName.text.toString()
-        if (!nameText.matches(".*[A-Z]*.".toRegex()))
+        val nameText = binding.LayoutFullName.text.toString()
+        if (!nameText.matches(".*[a-zA-Z][A-Z]{0}".toRegex()))
         {
+
+            //$[A-Z][a-zA-Z]*+\$"* ||".*^[a-zA-Z]{0,}(?: [a-zA-Z]){0,0}
+
             return "invalid full name"
+
         }
 
         return null
     }
 
-
+    // helperText toast message for invalid Email address
     private fun emailFocusListener() {
 
-        binding.eaEmail.setOnFocusChangeListener { _, focused ->
+        binding.LayoutEmail.setOnFocusChangeListener { _, focused ->
             if (!focused)
             {
-                binding.svEmail.helperText = validEmail()
+                binding.MainActivityEmail.helperText = validEmail()
 
             }
         }
 
     }
+    //validate Email address using pattern regex expression
     private fun validEmail(): String?{
-        val emailText = binding.eaEmail.text.toString()
+        val emailText = binding.LayoutEmail.text.toString()
         if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches())
         {
             return "invalid Email"
@@ -132,33 +156,38 @@ class MainActivity : AppCompatActivity() {
 
         return null
     }
-
+    //helperText toast message for the invalid Phone number
 
     private fun phoneFocusListener() {
 
-        binding.rbPhoneNumber.setOnFocusChangeListener { _, focused ->
+        binding.LayoutPhoneNumber.setOnFocusChangeListener { _, focused ->
             if (!focused)
             {
 
-                binding.qrPhoneNumber.helperText = validPhone()
+                binding.MainActivityPhoneNumber.helperText = validPhone()
             }
         }
 
     }
+    //validate Phone Number
 
     private fun validPhone(): String? {
-        val phoneText = binding.rbPhoneNumber.text.toString()
-        if (!phoneText.matches(".*[0-9].*".toRegex())) {
+        val phoneText = binding.LayoutPhoneNumber.text.toString()
+//        if (!phoneText.matches(".*[0-9].*".toRegex())) {
 
-            return "must be all digits"
-        }
-        if (phoneText.length != 10){
-            return "must be 10 digits"
-        }
+//   return "must be all digits"
+//        }
+        if (!phoneText.matches(".*[+][2][3][4][7-9][0-1][0-9].*".toRegex()) && !phoneText.matches(
+            ".*[0][7-9][0-1][0-9].*".toRegex())){
+                return "invalid number"
+            }
+
+//        if(!phoneText.matches("(?:(?:(?:\\+?234(?:\\h1)?|01)\\h*)?(?:\\(\\d{3}\\)|\\d{3})|\\d{4})(?:\\W*\\d{3})?\\W*\\d{4}(?!\\d)".toRegex())) {
+//            return "invalid phone number"
+//        }
 
         return null
     }
-//
 
 
 }

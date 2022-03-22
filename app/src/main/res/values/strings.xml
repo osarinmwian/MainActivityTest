@@ -4,6 +4,7 @@
 
 
     <string-array name="name">
+        <item>Sex</item>
         <item>Male</item>
         <item>Female</item>
 
