@@ -39,7 +39,7 @@
         android:layout_marginEnd="20dp"
         android:background="#0000ffff"
         android:hint="Full Name"
-        app:helperTextTextColor="@color/black"
+        app:helperTextTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"

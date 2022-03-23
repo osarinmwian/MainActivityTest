@@ -38,17 +38,21 @@ class MainActivityTest{
 
     @Test
     fun test_submit(){
-//        onView(withId(R.id.MainActivity_SignUp)).perform(click())
+
         val name = "noel"
         val email = "noel@gmail.com"
         val phone = "07046243186"
 
+
+     // The emulator is displayed to perform the typeText Action
         onView(withId(R.id.Layout_FullName)).perform(ViewActions.typeText(name))
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.Layout_Email)).perform(ViewActions.typeText(email))
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.Layout_Phone_Number)).perform(ViewActions.typeText(phone))
         Espresso.closeSoftKeyboard()
+
+        // When the signUp button is clicked the typeText is displayed in the next activity
         onView(withId(R.id.MainActivity_SignUp)).perform(click())
         onView(withId(R.id.textView)).check(matches(withText(name)))
         onView(withId(R.id.textView2)).check(matches(withText(email)))

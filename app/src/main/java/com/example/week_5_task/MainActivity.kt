@@ -33,15 +33,11 @@ class MainActivity : AppCompatActivity() {
         nameFocusListener()
         binding.MainActivitySignUp.setOnClickListener { signupForm() }
 
-
     }
-
     private fun signupForm(){
         binding.MainActivityEmail.helperText = validEmail()
         binding.MainActivityFullName.helperText = validName()
         binding.MainActivityPhoneNumber.helperText = validPhone()
-
-
 
         val validEmail = binding.MainActivityEmail.helperText == null
         val validName = binding.MainActivityFullName.helperText == null
@@ -77,10 +73,10 @@ class MainActivity : AppCompatActivity() {
             message += "\n\nName: " + binding.MainActivityFullName.helperText
         if (binding.MainActivityPhoneNumber.helperText != null)
             message += "\n\nPhone: " + binding.MainActivityPhoneNumber.helperText
-//        if (binding.spinnetr1!= null)
-//            message += "\n\nGender: " + binding.spinnetr1
-//
-//        //dialog toast message for invalid details
+       if (binding.spinnetr1!= null)
+            message += "\n\nGender: " + binding.spinnetr1
+
+       //dialog toast message for invalid details
         AlertDialog.Builder(this)
             .setTitle("invalid Form")
             .setMessage(message)
@@ -153,13 +149,11 @@ class MainActivity : AppCompatActivity() {
         {
             return "invalid Email"
         }
-
         return null
     }
     //helperText toast message for the invalid Phone number
 
     private fun phoneFocusListener() {
-
         binding.LayoutPhoneNumber.setOnFocusChangeListener { _, focused ->
             if (!focused)
             {
@@ -170,21 +164,13 @@ class MainActivity : AppCompatActivity() {
 
     }
     //validate Phone Number
-
     private fun validPhone(): String? {
         val phoneText = binding.LayoutPhoneNumber.text.toString()
-//        if (!phoneText.matches(".*[0-9].*".toRegex())) {
 
-//   return "must be all digits"
-//        }
         if (!phoneText.matches(".*[+][2][3][4][7-9][0-1][0-9].*".toRegex()) && !phoneText.matches(
             ".*[0][7-9][0-1][0-9].*".toRegex())){
                 return "invalid number"
             }
-
-//        if(!phoneText.matches("(?:(?:(?:\\+?234(?:\\h1)?|01)\\h*)?(?:\\(\\d{3}\\)|\\d{3})|\\d{4})(?:\\W*\\d{3})?\\W*\\d{4}(?!\\d)".toRegex())) {
-//            return "invalid phone number"
-//        }
 
         return null
     }
